@@ -8,17 +8,20 @@ var voteIndex2 = 1;
 var voteIndex3 = 2;
 var allVotes = [];
 var totalClicks = 0;
-var clickCount = 25;
+var clickCount = 0;
+//var imageview = 0
 
 function Voteimg(name, imageUrl,){
   this.name = name;
   this.imageUrl = imageUrl;
   this.timesClicked = 0;
+  this.imageview = 0;
   allVotes.push(this);
+  
 }
 
 new Voteimg('bag','img/bag.jpg');
-new Voteimg('banana', 'img/banana.jpg');
+new Voteimg('bnanana', 'img/banana.jpg');
 new Voteimg('bathroom', 'img/bathroom.jpg');
 new Voteimg('boots', 'img/boots.jpg');
 new Voteimg('breakfast', 'img/breakfast.jpg');
@@ -69,24 +72,39 @@ function imageClicked(event) {
       newIndex3 = Math.floor(Math.random()*allVotes.length);
     }
 
-    console.log(newIndex1, newIndex2, newIndex3)
+    console.log(totalClicks)
  
   voteIndex1 = newIndex1;
   voteIndex2 = newIndex2;
   voteIndex3 = newIndex3;
 
-    imageElements[0].src = allVotes[voteIndex1].imageUrl;
-    imageElements[1].src = allVotes[voteIndex2].imageUrl;
-    imageElements[2].src = allVotes[voteIndex3].imageUrl;
+    imageElements[0].src = allVotes[voteIndex1].imageUrl, allVotes[voteIndex1].imageview++
+    imageElements[1].src = allVotes[voteIndex2].imageUrl, allVotes[voteIndex2].imageview++
+    imageElements[2].src = allVotes[voteIndex3].imageUrl, allVotes[voteIndex3].imageview++
   
+    console.log(allVotes[voteIndex1].imageview)
     if(totalClicks >= 25) {
-      var resultEl = document.getElementById('3r');
-      
-      resultEl.textContent =('Thanks for voting! total vote count '+ totalClicks);
-    
+      for(var j = 0; j < imageElements.length; j++){
+      console.log(imageElements[j]);
+      imageElements[j].removeEventListener('click', imageClicked);
+      creatList();
     }
+    
  }
-
+}
+  
 for (var i = 0; i < imageElements.length; i++) {
 imageElements[i].addEventListener('click', imageClicked);
 };
+
+function creatList(){
+  var listContainer = document.getElementsByTagName('ul')[0];
+  for (var k = 0; k < allVotes.length; k++){
+    var listItem = document.createElement('li')
+    // listItem.textContent = (allVotes[k].name, 'clicked', allVotes[k].timesClicked, 'view', allVotes[k].imageview)
+    listItem.textContent = `${allVotes[k].name} clicked ${allVotes[k].timesClicked} view ${allVotes[k].imageview}`
+
+    listContainer.appendChild(listItem);
+  }
+}
+
