@@ -8,6 +8,7 @@ var voteIndex2 = 1;
 var voteIndex3 = 2;
 var allVotes = [];
 var totalClicks = 0;
+var clickCount = 25;
 
 function Voteimg(name, imageUrl,){
   this.name = name;
@@ -40,6 +41,7 @@ new Voteimg('wine-glass', 'img/wine-glass.jpg');
 
 
 function imageClicked(event) {
+ 
 
   if(event.srcElement.id === 'a') {
     allVotes[voteIndex1].timesClicked++;
@@ -55,7 +57,6 @@ function imageClicked(event) {
       totalClicks++
     }
  
-
 
     var newIndex1 = Math.floor(Math.random()*allVotes.length);
  
@@ -78,12 +79,14 @@ function imageClicked(event) {
     imageElements[1].src = allVotes[voteIndex2].imageUrl;
     imageElements[2].src = allVotes[voteIndex3].imageUrl;
   
-    if(totalClicks >= 3) {
+    if(totalClicks >= 25) {
       var resultEl = document.getElementById('3r');
       
-      resultEl.textContent = `Thanks for voting`;
+      resultEl.textContent =('Thanks for voting! total vote count '+ totalClicks);
+    
+    }
  }
-}
+
 for (var i = 0; i < imageElements.length; i++) {
 imageElements[i].addEventListener('click', imageClicked);
 };
