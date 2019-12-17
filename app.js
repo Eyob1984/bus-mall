@@ -69,7 +69,7 @@ function imageClicked(event) {
       newIndex3 = Math.floor(Math.random()*allVotes.length);
     }
 
-    console.log(newIndex1, newIndex2, newIndex3)
+    console.log(totalClicks)
  
   voteIndex1 = newIndex1;
   voteIndex2 = newIndex2;
@@ -80,13 +80,23 @@ function imageClicked(event) {
     imageElements[2].src = allVotes[voteIndex3].imageUrl;
   
     if(totalClicks >= 25) {
-      var resultEl = document.getElementById('3r');
-      
-      resultEl.textContent =('Thanks for voting! total vote count '+ totalClicks);
-    
+      for(var j = 0; j < imageElements.length; j++);
+      // imageElements[j].removeEventListener('click',imageClicked);
+      // creatList();
     }
+    
  }
 
 for (var i = 0; i < imageElements.length; i++) {
 imageElements[i].addEventListener('click', imageClicked);
 };
+
+function creatList(){
+  var listContainer = document.getElementsByTagName('ul')[0];
+  for (var k = 0; k < allVotes.length; k++){
+    var listItem = document.createElement('li')
+    listItem.textContent = (allVotes[k].name, allVotes[k].timesClicked)
+    listContainer.appendChild(listItem);
+}
+console.log(creatList())
+}
