@@ -152,8 +152,8 @@ function magicJschart(){
         data: getTheclick(),
         backgroundColor: random_bg_color(),
       },
-      { 
-        lable: '# of view',
+      {
+        label: '# of view',
         data: getImageViewed(),
         backgroundColor: random_bg_color(),
         borderColor: [
