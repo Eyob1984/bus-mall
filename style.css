@@ -11,6 +11,9 @@ img {
   margin-top: 75px;
   
 }
+main {
+  display: inline-block;
+}
 #a{
   border-style: groove;
   border-color: black;
@@ -18,4 +21,8 @@ img {
 }
 p{
   float: left;
+}
+footer{
+  width: 600px;
+  height: 400px;
 }
