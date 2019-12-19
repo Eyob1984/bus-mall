@@ -55,7 +55,7 @@ function random_bg_color() {
   var y = Math.floor(Math.random() * 256);
   var z = Math.floor(Math.random() * 256);
   var bgColor = 'rgb(' + x + ',' + y + ',' + z + ')';
-  console.log(bgColor);
+
 
   return bgColor;
 }
@@ -112,8 +112,6 @@ function imageClicked(event) {
     newIndex3 = Math.floor(Math.random()*allVotes.length);
   }
 
-  console.log(totalClicks);
-
   voteIndex1 = newIndex1;
   voteIndex2 = newIndex2;
   voteIndex3 = newIndex3;
@@ -122,10 +120,10 @@ function imageClicked(event) {
   imageElements[1].src = allVotes[voteIndex2].imageUrl, allVotes[voteIndex2].imageview++;
   imageElements[2].src = allVotes[voteIndex3].imageUrl, allVotes[voteIndex3].imageview++;
 
-  console.log(allVotes[voteIndex1].imageview);
-  if(totalClicks >= 5) {
+
+  if(totalClicks >= 25) {
     for(var j = 0; j < imageElements.length; j++){
-      // console.log(imageElements[j]);
+
       imageElements[j].removeEventListener('click', imageClicked);
     }
 
